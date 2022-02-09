@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+	<record model="ir.ui.view" id="hr_employee_form">
+		<field name="name">hr.employee.form</field>
+		<field name="model">hr.employee</field>
+		<field name="inherit_id" ref="hr.view_employee_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//page[@name='personal_information']" position="attributes">
+			   <attribute name="invisible">1</attribute>
+			</xpath>
+            <xpath expr="//page[@name='public']" position="before">
+                <page string="Informations personnelles">
+					<group>
+						<group string="Nationalité &amp; Autre Information">
+							<field name="x_nationalite_id"/>
+							<field name="matricule_genere"/>
+							<field name="matricule"/>
+							<field name="x_type_piece_id"/>
+							<field name="ref_identification"/>
+						</group>
+						<group string="Information de contact" >
+							<field name="tel"/>
+							<field name="personne_id"/>
+							<field name="x_email"/>
+						</group>
+						<group string="Status">
+							<field name="genre"/>
+							<field name="situation_marital"/>
+							<field name="charge_femme"/>
+							<field name="charge_enfant"/>
+							<field name="charge"/>
+						</group>
+						<group string="Naissance" >
+							<field name="x_date_naissance"/>
+							<field name="x_nb_annee_retraite"/>
+							<field name="lieu_naiss"/>
+							<field name="country_of_birth"/>
+						</group>
+						<group string="Éducation">
+						<field name="x_diplome_id"/>
+						<field name="x_diplome_recrut_id"/>
+						<field name="branche"/>
+						<field name="ecole"/>
+					</group>
+					</group>
+					<group string="Observations">
+						<field name="observations" nolabel="1"/>
+					</group>
+				</page>
+            </xpath>
+		</field>
+	</record>
+	<record model="ir.actions.act_window" id="act_list_emp">
+			<field name="name">Liste Des Employés</field>
+			<field name="res_model">hr.employee</field>
+			<field name="view_mode">kanban,tree,form</field>
+	</record>
+</odoo>

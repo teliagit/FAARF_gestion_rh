@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_hr_service,access.hr_service,model_hr_service,base.group_user,1,1,1,1
+access_hr_fonctionss,access.hr_fonctionss,model_hr_fonctionss,base.group_user,1,1,1,1
+access_hr_emploi,access.hr_emploi,model_hr_emploi,base.group_user,1,1,1,1
+access_hr_department,access.hr_department,model_hr_department,base.group_user,1,1,1,1
+access_hr_unite,access.hr_unite,model_hr_unite,base.group_user,1,1,1,1
+access_hr_section,access.hr_section,model_hr_section,base.group_user,1,1,1,1
+access_hr_contract_type,access.hr_contract_type,model_hr_contract_type,base.group_user,1,1,1,1
+access_hr_nature,access.hr_nature,model_hr_nature,base.group_user,1,1,1,1
+access_hr_motif,access.hr_motif,model_hr_motif,base.group_user,1,1,1,1
+access_hr_nbreannee,access.hr_nbreannee,model_hr_nbreannee,base.group_user,1,1,1,1
+access_hr_grillesalariale_contractuel,access.hr_grillesalariale_contractuel,model_hr_grillesalariale_contractuel,base.group_user,1,1,1,1
+access_hr_critere_evaluation,access.hr_critere_evaluation,model_hr_critere_evaluation,base.group_user,1,1,1,1
+access_hr_sous_critere_evaluation,access.hr_sous_critere_evaluation,model_hr_sous_critere_evaluation,base.group_user,1,1,1,1
+access_hr_titreevaluation,access.hr_titreevaluation,model_hr_titreevaluation,base.group_user,1,1,1,1
+access_hr_paramindemniteastr,access.hr_paramindemniteastr,model_hr_paramindemniteastr,base.group_user,1,1,1,1

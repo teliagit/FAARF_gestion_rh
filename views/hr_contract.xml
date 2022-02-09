@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="hr_contract_view_form">
+		<field name="name">	hr_contract hr_contract_view_form</field>
+		<field name="model">hr.contract</field>
+		<field name="inherit_id" ref="hr_contract.hr_contract_view_form"/>
+		<field name="arch" type="xml">
+			<xpath expr="//div[@name='title']/h1" position="before">
+				<label for="name"/>
+			</xpath>
+
+			<xpath expr="//field[@name='employee_id']" position="after">
+				<field name = "date_signature"/>
+			</xpath>
+			<xpath expr="//group[@name='duration_group']" position="before">
+				<group>
+					<field name="type_id"/>
+					<field name="struct_id" string="Type employé" required="1" />
+				</group>
+			</xpath>
+			<xpath expr="//group[@name='notes_group']" position="before">
+				<group>
+					<group name="duration_group">
+					<field name="date_start"/>
+					<field name="first_contract_date" attrs="{'invisible': ['|', ('first_contract_date', '=', False), ('first_contract_date', '=', 'date_start')]}"/>
+					<field name="date_end"/>
+					<field name="calendar_mismatch" invisible="1"/>
+					<label for="resource_calendar_id"/>
+					<div>
+						<field name="resource_calendar_id" required="1" nolabel="1"/>
+						<span attrs="{'invisible': ['|', ('calendar_mismatch', '=', False), ('state', '!=', 'open')]}" class="fa fa-exclamation-triangle text-danger o_calendar_warning pl-3">
+						</span>
+						<span class="o_calendar_warning_tooltip text-danger">
+							Calendar Mismatch : The employee's calendar does not match this contract's calendar. This could lead to unexpected behaviors.
+						</span>
+					</div>
+				<field name="hr_responsible_id"/>
+			</group>
+				</group>
+			</xpath>
+			<xpath expr="//page[@name='other']" position="after">
+                <page string = "Informations professionnelles" style="text-align:center;">
+					<group>
+						<group>
+                            <field name="x_categorie_employe_id"/>
+                            <field name="department_id"/>
+                            <field name="hr_service"/>
+                            <field name="x_unite_id"/>
+                            <field name="x_zone_id"/>
+					  	</group>
+						<group>
+                            <field name="x_emploi_id"/>
+                            <field name="x_fonction_id"/>
+                            <field name="x_mode_paiement"/>
+                            <field name="x_banque_id"/>
+							<field name="intitule"/>
+					  	</group>
+					</group>
+				</page>
+				<page string = "Situation Fonction Publique (FP)" style="text-align:center;">
+					<group>
+						<group string="Situation administrative de l'agent dans l'Etat">
+							<field name="x_classees_id" options="{'no_create':True}"/>
+							<field name="x_categorie_id" options="{'no_create':True}"/>
+							<field name="x_echelle_id" options="{'no_create':True}"/>
+							<field name="date_modiff" invisible = '1'/>
+							<field name="x_echellon_id"  options="{'no_create':True}"/>
+							<field name="x_classification" invisible = '1' />
+							<field name="date_debut"/>
+							<field name="date_fin"/>
+					  	</group>
+						<group string="Informations Salariales">
+							<field name="x_solde_indiciaire" force_save = '1'/>
+							<field name="x_solde_indiciaire_net" force_save = '1'/>
+							<field name="x_indice" invisible ='1' force_save = '1'/>
+					  	</group>
+					</group>
+					<group>
+						<group string="Période">
+							<field name="date_debut"/>
+							<field name="date_fin"/>
+					  	</group>
+					</group>
+				</page>
+				<page string = "Situation EPE" style="text-align:center;">
+					<group col="3">
+						<group>
+							<field name="x_categorie_c_id" options="{'no_create':True}"/>
+							<field name="x_echelle_c_id" options="{'no_create':True}"/>
+							<field name="x_echellon_c_id" options="{'no_create':True}"/>
+					  	</group>
+						<group>
+							<field name="x_emolument_ctrct"/>
+							<field name="x_taux_retenu_emolmt"/>
+							<field name="x_mnt_taux_retenu_emolmt"/>
+							<field name="x_emolument_ctrct_net" force_save = '1'/>
+						</group>
+						<group>
+							<field name="x_solde_indiciaire_ctrct" force_save = '1' />
+						</group>
+					</group>
+					<group>
+						<group>
+							<field name="date_embauche"/>
+							<field name="date_fin_embauche"/>
+							<field name="date_modiff" invisible = '0'/>
+							<field name="company_id" invisible = '1'/>
+						</group>
+						<group>
+
+						</group>
+					</group>
+				</page>
+				<page string="Information sur le salaire">
+					<group col="3">
+						<group>
+							<field name="x_salaire_base"/>
+						</group>
+						<group>
+							<field name="x_total_indemnites"/>
+						</group>
+						<group>
+							<field name="x_remuneration_total"/>
+						</group>
+					</group>
+					<group col="3">
+						<group>
+							<field name="x_indem_resp" force_save = '1' />
+							<field name="x_indem_astr" force_save = '1' />
+							<field name="x_indem_techn" force_save = '1' />
+							<field name="x_indem_specif" force_save = '1' />
+							<field name="x_indem_spec_inspect_trav" force_save = '1' />
+							<field name="x_indem_spec_inspect_irp" force_save = '1' />
+							<field name="x_indem_spec_inspect_ish" force_save = '1' />
+						</group>
+						<group>
+							<field name="x_indem_spec_inspect_ifc" force_save = '1' />
+							<field name="x_indem_loge" force_save = '1' />
+							<field name="x_indem_transp" force_save = '1' />
+							<field name="x_indem_inform" force_save = '1' />
+							<field name="x_indem_exploit" force_save = '1' />
+							<field name="x_indem_finance" force_save = '1' />
+							<field name="x_indem_garde" force_save = '1'/>
+						</group>
+						<group>
+							<field name="x_indem_risque" force_save = '1'/>
+							<field name="x_indem_suj" force_save = '1'/>
+							<field name="x_indem_form" force_save = '1'/>
+							<field name="x_indem_caisse" force_save = '1' />
+							<field name="x_indem_veste" force_save = '1'/>
+							<field name="x_indem_prime_rendement" force_save = '1'/>
+						</group>
+					</group>
+					<group col="3">
+						<group>
+							<field name="x_salaire_base"/>
+						</group>
+						<group>
+							<field name="x_total_indemnites"/>
+						</group>
+						<group>
+							<field name="x_remuneration_total"/>
+						</group>
+					</group>
+				</page>
+				<page string="Cotisation sociale">
+					<group col="3">
+						<group>
+							<field name="x_salaire_base"/>
+							<field name="x_total_indemnites"/>
+							<field name="x_remuneration_total"/>
+						</group>
+						<group>
+							<field name="x_total_indemnites"/>
+						</group>
+						<group>
+							<field name="x_remuneration_total"/>
+						</group>
+					</group>
+				</page>
+			</xpath>
+			
+			<xpath expr="//group[@name='duration_group']" position="attributes">
+				<attribute name="invisible">1</attribute>
+			</xpath>
+			<xpath expr="//page[@name='information']" position="attributes">
+			   <attribute name="invisible">1</attribute>
+			</xpath>
+			<xpath expr="//field[@name='structure_type_id']" position="attributes">
+			   <attribute name="invisible">1</attribute>
+			</xpath>
+			<xpath expr="//field[@name='company_id']" position="attributes">
+			   <attribute name="invisible">1</attribute>
+			</xpath>
+			<xpath expr="//field[@name='department_id']" position="attributes">
+			   <attribute name="invisible">1</attribute>
+			</xpath>
+			<xpath expr="//field[@name='job_id']" position="attributes">
+			   <attribute name="invisible">1</attribute>
+			</xpath>
+
+		</field>
+	</record>
+</odoo>
