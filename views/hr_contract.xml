@@ -47,6 +47,7 @@
                             <field name="hr_service"/>
                             <field name="x_unite_id"/>
                             <field name="x_zone_id"/>
+							<field name="x_charge"/>
 					  	</group>
 						<group>
                             <field name="x_emploi_id"/>
@@ -111,17 +112,13 @@
 						</group>
 					</group>
 				</page>
-				<page string="Information sur le salaire">
+				<page string="Indemnités">
 					<group col="3">
 						<group>
-							<field name="x_salaire_base"/>
+							<field name="x_total_indemnites" force_save="1"/>
 						</group>
-						<group>
-							<field name="x_total_indemnites"/>
-						</group>
-						<group>
-							<field name="x_remuneration_total"/>
-						</group>
+						<group></group>
+						<group></group>
 					</group>
 					<group col="3">
 						<group>
@@ -149,32 +146,175 @@
 							<field name="x_indem_caisse" force_save = '1' />
 							<field name="x_indem_veste" force_save = '1'/>
 							<field name="x_indem_prime_rendement" force_save = '1'/>
+							<field name="x_allocation_familial" force_save = '1'/>
 						</group>
 					</group>
 					<group col="3">
 						<group>
-							<field name="x_salaire_base"/>
+							<field name="x_total_indemnites" force_save="1"/>
 						</group>
-						<group>
-							<field name="x_total_indemnites"/>
+						<group></group>
+						<group></group>
+					</group>
+				</page>
+				<page string="Information sur le salaire">
+					<group col="3">
+						<group string="Informations salariales">
+							<field name="x_salaire_base" readonly="1" force_save='1' style="text-align: right;"/>
+							<field name="x_total_indemnites" readonly="1" force_save='1' style="text-align: right;"/>
+							<field name="x_remuneration_total" readonly="1" force_save='1' style="text-align: right;"/>
+							<field name="x_mnt_carfo" readonly="1"  force_save="1"
+								   attrs="{'invisible':[('x_mnt_carfo','==',0)]}"/>
+							<field name="x_mnt_cnss" readonly="1" force_save="1"
+								   attrs="{'invisible':[('x_mnt_cnss','==',0)]}"/>
+							<field name="x_allocation_familial" readonly="1" force_save="1"
+								   attrs="{'invisible':[('x_allocation_familial','==',0)]}"/>
+							<field name="x_salaire_brut" readonly="1" force_save='1' />
+							<field name="x_abattement_forfaitaire" force_save='1' />
+							<field name="x_total_exo" force_save='1' string="Totale exonération"/>
+							<field name="x_salaire_net_imposable" force_save='1' />
+							<field name="mnt_total_retenues" readonly="1" force_save='1'/>
+							<field name="x_net_payer" force_save='1' readonly="1" />
 						</group>
-						<group>
-							<field name="x_remuneration_total"/>
+						<group string="Retenues">
+							<field name="x_mnt_carfo" readonly="1"  force_save="1"
+								   attrs="{'invisible':[('x_mnt_carfo','==',0)]}"/>
+							<field name="x_mnt_patronal_carfo" readonly="1" force_save="1"
+								   attrs="{'invisible':[('x_mnt_patronal_carfo','==',0)]}"/>
+							<field name="x_mnt_cnss" readonly="1" force_save="1"
+								   attrs="{'invisible':[('x_mnt_cnss','==',0)]}"/>
+							<field name="x_mnt_patronal_cnss" readonly="1" force_save="1"
+								   attrs="{'invisible':[('x_mnt_patronal_cnss','==',0)]}"/>
+							<field name="x_retenue_iuts" force_save="1" readonly="1" style="text-align: right;"/>
+							<field name="x_montant_charge" force_save='1' readonly="1" style="text-align: right;"/>
+							<field name="x_iuts_net" force_save='1' readonly="1" style="text-align: right;"/>
+						</group>
+						<group string="Rappel/Trop perçu">
+
 						</group>
 					</group>
 				</page>
-				<page string="Cotisation sociale">
+				<page string="Rappel">
 					<group col="3">
 						<group>
-							<field name="x_salaire_base"/>
-							<field name="x_total_indemnites"/>
-							<field name="x_remuneration_total"/>
+							<field name="mnt_rappel_salaire" force_save="1"/>
+						</group>
+						<group></group>
+						<group>
+							<field name="mnt_total_rappel" force_save="1"/>
+						</group>
+					</group>
+					<group col="3">
+						<group>
+							<field name="mnt_rappel_resp" force_save = '1' />
+							<field name="mnt_rappel_astr" force_save = '1' />
+							<field name="mnt_rappel_techn" force_save = '1' />
+							<field name="mnt_rappel_spec" force_save = '1' />
+							<field name="mnt_rappel_it" force_save = '1' />
+							<field name="mnt_rappel_irp" force_save = '1' />
+							<field name="mnt_rappel_ish" force_save = '1' />
 						</group>
 						<group>
-							<field name="x_total_indemnites"/>
+							<field name="mnt_rappel_ifc" force_save = '1' />
+							<field name="mnt_rappel_loge" force_save = '1' />
+							<field name="mnt_rappel_trans" force_save = '1' />
+							<field name="mnt_rappel_inf" force_save = '1' />
+							<field name="mnt_rappel_explot" force_save = '1' />
+							<field name="mnt_rappel_resp_financ" force_save = '1' />
+							<field name="mnt_rappel_garde" force_save = '1'/>
 						</group>
 						<group>
-							<field name="x_remuneration_total"/>
+							<field name="mnt_rappel_risque" force_save = '1'/>
+							<field name="mnt_rappel_sujetion" force_save = '1'/>
+							<field name="mnt_rappel_formation" force_save = '1'/>
+							<field name="mnt_rappel_caisse" force_save = '1' />
+							<field name="mnt_rappel_veste" force_save = '1'/>
+							<field name="mnt_rappel_allocation" force_save = '1'/>
+						</group>
+					</group>
+					<group col="3">
+						<group>
+							<field name="x_total_indemnites" force_save="1"/>
+						</group>
+						<group></group>
+						<group></group>
+					</group>
+				</page>
+				<page string="Trop perçu">
+					<group col="3">
+						<group>
+							<field name="mnt_percu_salaire" force_save="1"/>
+						</group>
+						<group></group>
+						<group></group>
+					</group>
+					<group col="3">
+						<group>
+							<field name="mnt_percu_resp" force_save = '1' />
+							<field name="mnt_percu_astr" force_save = '1' />
+							<field name="mnt_percu_techn" force_save = '1' />
+							<field name="mnt_percu_spec" force_save = '1' />
+							<field name="mnt_percu_spec_it" force_save = '1' />
+							<field name="mnt_percu_spec_irp" force_save = '1' />
+							<field name="mnt_percu_spec_ish" force_save = '1' />
+						</group>
+						<group>
+							<field name="mnt_percu_spec_ifc" force_save = '1' />
+							<field name="mnt_percu_loge" force_save = '1' />
+							<field name="mnt_percu_trans" force_save = '1' />
+							<field name="mnt_percu_inf" force_save = '1' />
+							<field name="mnt_percu_explot" force_save = '1' />
+							<field name="mnt_percu_resp_financ" force_save = '1' />
+							<field name="mnt_percu_garde" force_save = '1'/>
+						</group>
+						<group>
+							<field name="mnt_percu_risque" force_save = '1'/>
+							<field name="mnt_percu_sujetion" force_save = '1'/>
+							<field name="mnt_percu_formation" force_save = '1'/>
+							<field name="mnt_percu_caisse" force_save = '1' />
+							<field name="mnt_percu_veste" force_save = '1'/>
+							<field name="mnt_percu_allocation" force_save = '1'/>
+						</group>
+					</group>
+					<group col="3">
+						<group>
+							<field name="x_total_indemnites" force_save="1"/>
+						</group>
+						<group></group>
+						<group></group>
+					</group>
+				</page>
+				<page  string = "Informations Exonérations" invisible="0">
+					<group col="3">
+						<group>
+							<field name="x_total_exo" force_save='1'/>
+						</group>
+					</group>
+					<group col="3">
+						<group>
+							<field name="x_indem_resp_exo" force_save='1'/>
+							<field name="x_indem_astr_exo" force_save='1'/>
+							<field name="x_indem_techn_exo" force_save='1'/>
+							<field name="x_indem_specif_exo" force_save='1'/>
+							<field name="x_indem_specif_it_exo" force_save='1'/>
+							<field name="x_indem_specif_ifc_exo" force_save='1'/>
+						</group>
+						<group>
+							<field name="x_indem_loge_exo" force_save='1'/>
+							<field name="x_indem_transp_exo" force_save='1'/>
+							<field name="x_indem_inform_exo" force_save='1'/>
+							<field name="x_indem_exploit_exo" force_save='1'/>
+							<field name="x_indem_finance_exo" force_save='1'/>
+							<field name="x_indem_garde_exo" force_save='1'/>
+						</group>
+						<group>
+							<field name="x_indem_risque_exo" force_save='1'/>
+							<field name="x_indem_suj_exo" force_save='1'/>
+							<field name="x_indem_form_exo" force_save='1'/>
+							<field name="x_indem_caisse_exo" force_save='1'/>
+							<field name="x_indem_veste_exo" force_save='1'/>
+							<field name="x_indem_specif_irp_exo" force_save='1'/>
+							<field name="x_prime_exo" force_save='1'/>
 						</group>
 					</group>
 				</page>

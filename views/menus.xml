@@ -54,6 +54,8 @@
 <!--                <menuitem id="menu_param_indemnite_specifique_ifc" parent="menu_fonction" name="Parametrage Indemnité/Spécifique ICF" action="act_param_specifique_indemnite_ifc" sequence = "72"/>-->
 <!--                <menuitem id="menu_param_indemnite_caisse" parent="menu_fonction" name="Parametrage Indemnité/Caisse" action="act_param_caisse" sequence = "73"/>-->
 
+        <menuitem id="menu_contrat" parent="main_menu" name="Contrats Personnels" action="hr_contract.action_hr_contract" sequence = "30" groups='gestion_rh.Gestion_RH_chef_service'/>
+
         <menuitem id="main_menu_emp" name ="Personnel" sequence="20" parent="main_menu" groups='gestion_rh.Gestion_RH_chef_service'/>
             <menuitem id="main_menu_emp_e" name ="Saisie/MàJ-Personnel" sequence="21" parent="main_menu_emp" action="act_list_emp"/>
 <!--		<menuitem id="main_menu_prorata" name ="Calcul au Prorata" sequence="28" parent="main_menu_emp" action="act_prorata" />-->
